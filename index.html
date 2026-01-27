@@ -1,0 +1,117 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wildin Shop</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <h1 class="brand" data-testid="brand">Wildin Shop</h1>
+        <div class="header-actions">
+          <label class="search">
+            <span class="visually-hidden">Search products</span>
+            <input
+              id="search-input"
+              data-testid="search-input"
+              type="search"
+              placeholder="Search products..."
+              autocomplete="off"
+            />
+          </label>
+          <button id="cart-button" data-testid="cart-button" class="cart-button" type="button">
+            Cart
+            <span id="cart-count" data-testid="cart-count" class="cart-count">0</span>
+          </button>
+        </div>
+      </div>
+      <nav class="filters" aria-label="Product filters">
+        <button class="filter-button active" data-testid="filter-all" data-filter="all" type="button">
+          All
+        </button>
+        <button class="filter-button" data-testid="filter-apparel" data-filter="apparel" type="button">
+          Apparel
+        </button>
+        <button class="filter-button" data-testid="filter-gear" data-filter="gear" type="button">
+          Gear
+        </button>
+        <button class="filter-button" data-testid="filter-accessories" data-filter="accessories" type="button">
+          Accessories
+        </button>
+      </nav>
+    </header>
+
+    <main class="layout">
+      <section class="product-section" aria-labelledby="products-title">
+        <div class="section-head">
+          <h2 id="products-title">Products</h2>
+          <p id="results-meta" data-testid="results-meta" class="results-meta"></p>
+        </div>
+        <ul id="product-grid" data-testid="product-grid" class="product-grid" aria-live="polite"></ul>
+      </section>
+
+      <aside id="cart-panel" data-testid="cart-panel" class="cart-panel" aria-labelledby="cart-title" hidden>
+        <div class="cart-head">
+          <h2 id="cart-title">Your Cart</h2>
+          <button id="cart-close" data-testid="cart-close" class="cart-close" type="button">Close</button>
+        </div>
+        <ul id="cart-items" data-testid="cart-items" class="cart-items"></ul>
+        <div class="cart-summary">
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <strong id="cart-subtotal" data-testid="cart-subtotal">$0.00</strong>
+          </div>
+          <button id="checkout-button" data-testid="checkout-button" class="checkout-button" type="button">
+            Checkout
+          </button>
+          <p id="checkout-message" data-testid="checkout-message" class="checkout-message" role="status"></p>
+        </div>
+      </aside>
+    </main>
+
+    <template id="product-card-template">
+      <li class="product-card" data-testid="product-card">
+        <div class="product-media">
+          <div class="product-badge" data-testid="product-badge"></div>
+        </div>
+        <div class="product-body">
+          <h3 class="product-name" data-testid="product-name"></h3>
+          <p class="product-category" data-testid="product-category"></p>
+          <p class="product-price" data-testid="product-price"></p>
+          <div class="product-actions">
+            <button class="add-button" data-testid="add-to-cart" type="button">Add to cart</button>
+            <button class="details-button" data-testid="view-details" type="button">Details</button>
+          </div>
+        </div>
+      </li>
+    </template>
+
+    <dialog id="details-dialog" data-testid="details-dialog" class="details-dialog" aria-labelledby="details-title">
+      <form method="dialog" class="details-shell">
+        <header class="details-head">
+          <h2 id="details-title" data-testid="details-title"></h2>
+          <button class="dialog-close" data-testid="details-close" value="cancel" type="submit">✕</button>
+        </header>
+        <div class="details-body">
+          <p id="details-category" data-testid="details-category"></p>
+          <p id="details-price" data-testid="details-price" class="details-price"></p>
+          <p id="details-description" data-testid="details-description"></p>
+          <ul id="details-tags" data-testid="details-tags" class="details-tags"></ul>
+        </div>
+        <footer class="details-foot">
+          <button id="details-add" data-testid="details-add" class="add-button" value="default" type="button">
+            Add to cart
+          </button>
+        </footer>
+      </form>
+    </dialog>
+
+    <footer class="site-footer">
+      <p>Built for automation testing practice.</p>
+    </footer>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>
